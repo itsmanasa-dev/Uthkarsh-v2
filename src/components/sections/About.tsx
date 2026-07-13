@@ -1,5 +1,4 @@
 ﻿import { motion } from 'motion/react'
-import { useReducedMotion } from '../../hooks/useReducedMotion'
 import './About.css'
 
 const lines = [
@@ -11,8 +10,6 @@ const lines = [
 ]
 
 export function About() {
-  const reducedMotion = useReducedMotion()
-
   return (
     <section className="about" id="about">
       <div className="container">
@@ -22,7 +19,7 @@ export function About() {
               <motion.p
                 key={line.text}
                 className={`about__line${line.accent ? ' about__line--accent' : ''}`}
-                initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: line.delay, ease: [0.22, 1, 0.36, 1] }}
@@ -31,39 +28,28 @@ export function About() {
               </motion.p>
             ))}
           </div>
-
-          <motion.div
-            className="about__body"
-            initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <p className="about__text">
+          <div className="about__body">
+            <motion.p
+              className="about__text"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            >
               UTKARSH 26 is a six-hour inter-college hackathon where up to 50 teams
               of 2–4 participants build working solutions against the clock.
-            </p>
-            <p className="about__text">
+            </motion.p>
+            <motion.p
+              className="about__text"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            >
               The problem is revealed on-site. A hidden challenge arrives during the hackathon.
               Teams must adapt.
-            </p>
-            <div className="about__meta">
-              <span className="about__meta-item">
-                <span className="about__meta-label">Duration</span>
-                <span className="about__meta-value">6 Hours</span>
-              </span>
-              <span className="about__meta-divider" />
-              <span className="about__meta-item">
-                <span className="about__meta-label">Teams</span>
-                <span className="about__meta-value">Up to 50</span>
-              </span>
-              <span className="about__meta-divider" />
-              <span className="about__meta-item">
-                <span className="about__meta-label">Participants</span>
-                <span className="about__meta-value">2–4 per team</span>
-              </span>
-            </div>
-          </motion.div>
+            </motion.p>
+          </div>
         </div>
       </div>
     </section>

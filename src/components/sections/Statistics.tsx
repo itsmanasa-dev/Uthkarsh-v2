@@ -1,35 +1,41 @@
 ﻿import { motion } from 'motion/react'
-import { useReducedMotion } from '../../hooks/useReducedMotion'
 import './Statistics.css'
 
 const stats = [
-  { value: '50', label: 'Teams', sub: 'Maximum capacity' },
-  { value: '200', label: 'Minds', sub: 'Up to competing' },
-  { value: '6', label: 'Hours', sub: 'On the clock' },
-  { value: '2–4', label: 'Per Team', sub: 'Participants' },
+  { value: '50', label: 'Teams' },
+  { value: '200', label: 'Minds' },
+  { value: '6', label: 'Hours' },
+  { value: '2–4', label: 'Per Team' },
 ]
 
 export function Statistics() {
-  const reducedMotion = useReducedMotion()
-
   return (
     <section className="stats">
       <div className="container">
-        <div className="stats__grid">
+        <div className="stats__strip">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
               className="stats__item"
-              initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="stats__value">{stat.value}</div>
-              <div className="stats__label">{stat.label}</div>
-              <div className="stats__sub">{stat.sub}</div>
+              <span className="stats__value">{stat.value}</span>
+              <span className="stats__label">{stat.label}</span>
             </motion.div>
           ))}
+          <motion.div
+            className="stats__pulse"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <span className="stats__pulse-dot" />
+            <span className="stats__pulse-label">Capacity: 50 teams</span>
+          </motion.div>
         </div>
       </div>
     </section>

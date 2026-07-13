@@ -1,44 +1,106 @@
 ﻿import { motion } from 'motion/react'
-import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { Accordion } from '../ui/Accordion'
+import { rules as rulesData } from '../../data/rules'
+import { faqItems } from '../../data/faq'
+import { eventConfig } from '../../data/eventConfig'
 import './Guidelines.css'
 
 export function Guidelines() {
-  const reducedMotion = useReducedMotion()
+  const accordionItems = rulesData.map((rule) => ({
+    id: rule.category.toLowerCase().replace(/\s+/g, '-'),
+    title: rule.category,
+    content: (
+      <ul className="event-brief__list">
+        {rule.items.map((item, i) => (
+          <li key={i} className="event-brief__item">{item}</li>
+        ))}
+      </ul>
+    ),
+  }))
+
+  const faqAccordionItems = faqItems.map((faq) => ({
+    id: faq.question.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, ''),
+    title: faq.question,
+    content: faq.answer,
+  }))
 
   return (
-    <section className="guidelines" id="guidelines">
+    <section className="event-brief" id="guidelines">
       <div className="container">
         <motion.div
-          className="guidelines__content"
-          initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
+          className="event-brief__header"
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="guidelines__tag">GUIDELINES</span>
-          <h2 className="guidelines__title">Event Guidelines</h2>
-          <div className="guidelines__document">
-            <div className="guidelines__doc-icon">
-              <svg width="32" height="40" viewBox="0 0 32 40" fill="none" aria-hidden="true">
-                <rect x="2" y="2" width="28" height="36" rx="2" stroke="currentColor" strokeWidth="1.5" />
-                <line x1="8" y1="14" x2="24" y2="14" stroke="currentColor" strokeWidth="1.5" />
-                <line x1="8" y1="20" x2="24" y2="20" stroke="currentColor" strokeWidth="1.5" />
-                <line x1="8" y1="26" x2="18" y2="26" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </div>
-            <div className="guidelines__doc-info">
-              <span className="guidelines__doc-name">Official Document</span>
-              <span className="guidelines__doc-status">
-                <span className="guidelines__status-dot" />
-                Coming Soon
-              </span>
-              <span className="guidelines__doc-version">PDF · Version 1.0</span>
-            </div>
-          </div>
-          <p className="guidelines__note">
-            Full guidelines will be published here before the event.
-          </p>
+          <span className="section-eyebrow">ACT 09 — THE BRIEF</span>
+          <h2 className="event-brief__title">Event Brief</h2>
         </motion.div>
+
+        <div className="event-brief__sections">
+          <motion.div
+            className="event-brief__section"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h3 className="event-brief__section-title">Guidelines</h3>
+            <p className="event-brief__placeholder">
+              Official guidelines document coming soon.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="event-brief__section"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h3 className="event-brief__section-title">Prize Pool</h3>
+            <p className="event-brief__placeholder">
+              To be revealed. Winners receive certificates and recognition.
+            </p>
+            <div className="event-brief__categories">
+              <div className="event-brief__cat">
+                <span className="event-brief__cat-num">01</span>
+                <span className="event-brief__cat-label">Winner</span>
+              </div>
+              <div className="event-brief__cat">
+                <span className="event-brief__cat-num">02</span>
+                <span className="event-brief__cat-label">Runner-up</span>
+              </div>
+              <div className="event-brief__cat">
+                <span className="event-brief__cat-num">03</span>
+                <span className="event-brief__cat-label">Recognition</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="event-brief__section event-brief__section--full"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h3 className="event-brief__section-title">Essential Rules</h3>
+            <Accordion items={accordionItems} />
+          </motion.div>
+
+          <motion.div
+            className="event-brief__section event-brief__section--full"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h3 className="event-brief__section-title">Frequently Asked Questions</h3>
+            <Accordion items={faqAccordionItems} />
+          </motion.div>
+        </div>
       </div>
     </section>
   )

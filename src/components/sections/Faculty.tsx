@@ -1,59 +1,59 @@
 ﻿import { motion } from 'motion/react'
-import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { facultyMembers } from '../../data/faculty'
 import './Faculty.css'
 
-const facultyConfig: Record<string, { objectPosition: string; label: string }> = {
-  principal: { objectPosition: 'center 25%', label: 'Principal' },
-  hod: { objectPosition: 'center 30%', label: 'Head of Department' },
-  asma: { objectPosition: 'center 30%', label: 'Faculty' },
-  sachidanand: { objectPosition: 'center 30%', label: 'Faculty' },
-  banuprakash: { objectPosition: 'center 30%', label: 'Faculty' },
+const facultyConfig: Record<string, { objectPosition: string; role: string }> = {
+  principal: { objectPosition: 'center 25%', role: 'Principal' },
+  hod: { objectPosition: 'center 30%', role: 'Head of Department' },
+  asma: { objectPosition: 'center 30%', role: 'Faculty' },
+  sachidanand: { objectPosition: 'center 30%', role: 'Faculty' },
+  banuprakash: { objectPosition: 'center 30%', role: 'Faculty' },
 }
 
-function FacultyPortrait({ member, index }: { member: typeof facultyMembers[number]; index: number }) {
-  const reducedMotion = useReducedMotion()
-  const config = facultyConfig[member.id] || { objectPosition: 'center 30%', label: '' }
+function FacultyCard({ member, index }: { member: typeof facultyMembers[number]; index: number }) {
+  const config = facultyConfig[member.id] || { objectPosition: 'center 30%', role: '' }
+  const isLeader = member.id === 'principal' || member.id === 'hod'
 
   return (
     <motion.div
-      className="faculty__card"
-      initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+      className={`faculty__card${isLeader ? ' faculty__card--leader' : ''}`}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="faculty__image-wrapper">
+      <div className="faculty__image-wrap">
         <img
           src={member.image}
-          alt={member.name ? `${member.name}, ${member.designation || ''}` : `${config.label}`}
+          alt={member.name ? `${member.name}` : `${config.role}`}
           className="faculty__image"
           style={{ objectPosition: config.objectPosition }}
           onError={(e) => {
             const target = e.currentTarget
             target.style.display = 'none'
-            const placeholder = target.nextElementSibling
-            if (placeholder) (placeholder as HTMLElement).style.display = 'flex'
+            const ph = target.nextElementSibling
+            if (ph) (ph as HTMLElement).style.display = 'flex'
           }}
         />
         <div className="faculty__placeholder">
           <span className="faculty__placeholder-initial">
             {member.id === 'principal' ? 'PR' :
-             member.id === 'hod' ? 'HOD' :
+             member.id === 'hod' ? 'HD' :
              member.id.charAt(0).toUpperCase()}
           </span>
-          <span className="faculty__placeholder-label">{config.label}</span>
         </div>
       </div>
-
       <div className="faculty__info">
         {member.name ? (
           <h3 className="faculty__name">{member.name}</h3>
         ) : (
-          <h3 className="faculty__name faculty__name--pending">{config.label}</h3>
+          <h3 className="faculty__name faculty__name--pending">{config.role}</h3>
         )}
         {member.designation && (
-          <p className="faculty__designation">{member.designation}</p>
+          <p className="faculty__role">{member.designation}</p>
+        )}
+        {!member.designation && config.role && (
+          <p className="faculty__role">{config.role}</p>
         )}
       </div>
     </motion.div>
@@ -61,33 +61,42 @@ function FacultyPortrait({ member, index }: { member: typeof facultyMembers[numb
 }
 
 export function Faculty() {
+  const leaders = facultyMembers.filter(m => m.id === 'principal' || m.id === 'hod')
+  const others = facultyMembers.filter(m => m.id !== 'principal' && m.id !== 'hod')
+
   return (
     <section className="faculty" id="faculty">
       <div className="container">
         <div className="faculty__header">
           <motion.span
-            className="faculty__tag"
+            className="section-eyebrow"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5 }}
           >
-            THE PEOPLE BEHIND UTKARSH
+            ACT 08 — THE PEOPLE
           </motion.span>
           <motion.h2
             className="faculty__heading"
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="faculty__heading-row">Faculty &amp; Leadership</span>
+            Faculty &amp; Leadership
           </motion.h2>
         </div>
 
+        <div className="faculty__leadership">
+          {leaders.map((member, i) => (
+            <FacultyCard key={member.id} member={member} index={i} />
+          ))}
+        </div>
+
         <div className="faculty__grid">
-          {facultyMembers.map((member, i) => (
-            <FacultyPortrait key={member.id} member={member} index={i} />
+          {others.map((member, i) => (
+            <FacultyCard key={member.id} member={member} index={i + leaders.length} />
           ))}
         </div>
       </div>

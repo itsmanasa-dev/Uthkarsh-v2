@@ -6,7 +6,7 @@
 .institution__layout {
   display: grid;
   gap: var(--space-8);
-  align-items: center;
+  align-items: start;
 }
 
 @media (min-width: 768px) {
@@ -16,24 +16,13 @@
   }
 }
 
-.institution__tag {
-  font-family: var(--font-mono);
-  font-size: var(--text-micro);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  display: inline-block;
-  margin-bottom: var(--space-3);
-}
-
 .institution__name {
   font-family: var(--font-display);
   font-size: clamp(var(--text-heading-md), 5vw, var(--text-heading-xl));
   font-weight: 800;
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-tight);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
   max-width: 24rem;
 }
 
@@ -43,111 +32,60 @@
   margin-bottom: var(--space-6);
 }
 
-.institution__logo {
+.institution__dept {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.institution__dept-heading {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-1);
+}
+
+.institution__dept-name {
+  font-family: var(--font-display);
+  font-size: var(--text-body-lg);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.institution__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.institution__logo-box {
   display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-5);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-6);
   border: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 
 .institution__logo-text {
   font-family: var(--font-display);
-  font-size: var(--text-heading-md);
+  font-size: var(--text-heading-lg);
   font-weight: 800;
-  letter-spacing: var(--tracking-tight);
-  color: var(--color-text);
-  opacity: 0.4;
-}
-
-.institution__visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.institution__graphic {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
-}
-
-.institution__building {
-  position: relative;
-}
-
-.institution__building-body {
-  position: relative;
-  width: 12rem;
-  padding-top: 3rem;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-}
-
-.institution__building-roof {
-  position: absolute;
-  top: -2rem;
-  left: -1rem;
-  right: -1rem;
-  height: 2rem;
-  background: var(--color-text);
-  clip-path: polygon(10% 100%, 50% 0%, 90% 100%);
-}
-
-.institution__building-floor {
-  display: flex;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  border-bottom: 1px solid var(--color-border);
-  justify-content: center;
-}
-
-.institution__building-floor:last-child {
-  border-bottom: none;
-}
-
-.institution__building-window {
-  width: 2rem;
-  height: 2.5rem;
-  border: 1px solid var(--color-border);
-  background: var(--color-bg);
-}
-
-.institution__building-door {
-  width: 2.5rem;
-  height: 3rem;
-  border: 1px solid var(--color-accent);
-  background: var(--color-accent);
-  opacity: 0.3;
-  margin-top: -0.25rem;
-}
-
-.institution__graphic-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.institution__graphic-label span:first-child {
-  font-family: var(--font-display);
-  font-size: var(--text-heading-sm);
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: -0.02em;
   color: var(--color-text);
 }
 
-.institution__graphic-label span:last-child {
+.institution__logo-sub {
   font-size: var(--text-micro);
   color: var(--color-text-muted);
   letter-spacing: 0.06em;
 }
 
-@media (max-width: 479px) {
-  .institution__building-body {
-    width: 10rem;
-  }
+.institution__blurb {
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  max-width: 20rem;
 }

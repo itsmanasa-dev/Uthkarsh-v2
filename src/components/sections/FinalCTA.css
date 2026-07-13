@@ -6,31 +6,6 @@
   overflow: hidden;
 }
 
-.final-cta__pattern {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 3rem 3rem;
-  pointer-events: none;
-}
-
-.final-cta__scanline {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: rgba(255, 77, 0, 0.1);
-  animation: finalCtaScan 6s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes finalCtaScan {
-  0% { top: -1px; }
-  100% { top: 100%; }
-}
-
 .final-cta__content {
   position: relative;
   z-index: 2;
@@ -48,18 +23,19 @@
   margin-bottom: var(--space-6);
 }
 
-.final-cta__accent {
+.final-cta__line {
+  display: block;
+}
+
+.final-cta__line--accent {
   color: var(--color-accent);
 }
 
-.final-cta__facts {
-  margin-bottom: var(--space-6);
-}
-
-.final-cta__fact {
+.final-cta__text {
   font-size: var(--text-body-md);
   line-height: var(--leading-relaxed);
   opacity: 0.6;
+  margin-bottom: var(--space-6);
 }
 
 .final-cta__button {
@@ -89,13 +65,10 @@
   color: var(--surface);
 }
 
-.final-cta__timer {
-  margin-top: var(--space-6);
-}
-
-.final-cta__timer-text {
-  font-family: var(--font-mono);
+.final-cta__note {
   font-size: var(--text-micro);
   opacity: 0.4;
-  letter-spacing: 0.08em;
+  margin-top: var(--space-6);
+  line-height: var(--leading-relaxed);
+  letter-spacing: 0.04em;
 }

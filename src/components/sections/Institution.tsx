@@ -1,62 +1,47 @@
 ﻿import { motion } from 'motion/react'
 import { eventConfig } from '../../data/eventConfig'
-import { useReducedMotion } from '../../hooks/useReducedMotion'
 import './Institution.css'
 
 export function Institution() {
-  const reducedMotion = useReducedMotion()
-
   return (
     <section className="institution" id="institution">
       <div className="container">
         <div className="institution__layout">
           <motion.div
             className="institution__content"
-            initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="institution__tag">THE INSTITUTION</span>
+            <span className="section-eyebrow">ACT 07 — THE INSTITUTION</span>
             <h2 className="institution__name">
               {eventConfig.institutionFull}
             </h2>
             <p className="institution__location">
               {eventConfig.location}
             </p>
-            <div className="institution__logo">
-              <span className="institution__logo-text">PESIAMS</span>
+            <div className="institution__dept">
+              <h3 className="institution__dept-heading">Organised by</h3>
+              <p className="institution__dept-name">{eventConfig.department}</p>
             </div>
           </motion.div>
 
           <motion.div
-            className="institution__visual"
-            initial={reducedMotion ? { opacity: 1 } : { opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            className="institution__aside"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="institution__graphic">
-              <div className="institution__building">
-                <div className="institution__building-body">
-                  <div className="institution__building-roof" />
-                  <div className="institution__building-floor">
-                    <div className="institution__building-window" />
-                    <div className="institution__building-window" />
-                    <div className="institution__building-window" />
-                  </div>
-                  <div className="institution__building-floor">
-                    <div className="institution__building-window" />
-                    <div className="institution__building-door" />
-                    <div className="institution__building-window" />
-                  </div>
-                </div>
-              </div>
-              <div className="institution__graphic-label">
-                <span>{eventConfig.institutionShort}</span>
-                <span>Established 2008</span>
-              </div>
+            <div className="institution__logo-box">
+              <span className="institution__logo-text">PESIAMS</span>
+              <span className="institution__logo-sub">Since 2008</span>
             </div>
+            <p className="institution__blurb">
+              PES Institute of Advanced Management Studies has been committed to academic
+              excellence in management and computer applications education since 2008.
+            </p>
           </motion.div>
         </div>
       </div>

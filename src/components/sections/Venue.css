@@ -1,6 +1,6 @@
 .venue {
   padding: var(--section-space-lg) 0;
-  background: var(--color-bg);
+  background: var(--color-surface);
 }
 
 .venue__layout {
@@ -14,51 +14,6 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--space-12);
   }
-}
-
-.venue__map {
-  aspect-ratio: 4 / 3;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.venue__map-svg {
-  width: 100%;
-  height: 100%;
-  padding: var(--space-6);
-  color: var(--color-text);
-  opacity: 0.6;
-}
-
-.venue__map-building {
-  opacity: 0.3;
-}
-
-.venue__map-window {
-  opacity: 0.2;
-}
-
-.venue__map-door {
-  opacity: 0.5;
-}
-
-.venue__map-pin {
-  opacity: 0.6;
-}
-
-.venue__tag {
-  font-family: var(--font-mono);
-  font-size: var(--text-micro);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  display: inline-block;
-  margin-bottom: var(--space-2);
 }
 
 .venue__title {
@@ -87,7 +42,7 @@
   margin-bottom: var(--space-4);
   padding: var(--space-4);
   border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: var(--color-bg);
 }
 
 .venue__detail {
@@ -113,6 +68,51 @@
 }
 
 .venue__note {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.venue__card {
+  display: flex;
+  justify-content: center;
+}
+
+.venue__card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-6);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  text-align: center;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.venue__card-label {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-lg);
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.venue__card-campus {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.venue__card-rule {
+  width: 3rem;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.4;
+}
+
+.venue__card-address {
   font-size: var(--text-body-sm);
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
