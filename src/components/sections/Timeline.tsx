@@ -67,7 +67,7 @@ export function Timeline() {
                 <div className="timeline__summary-fill" />
               </div>
               <span className="timeline__summary-sub">ONE DEADLINE</span>
-              <span className="timeline__summary-range">10:00 → 16:00</span>
+              <span className="timeline__summary-range">10:00 – 16:00</span>
               <div className="timeline__summary-events">
                 <div className="timeline__summary-event">
                   <span className="timeline__summary-event-dot" />

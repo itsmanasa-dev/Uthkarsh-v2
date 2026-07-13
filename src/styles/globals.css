@@ -31,9 +31,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-img,
-video,
-canvas {
+img, video, canvas {
   display: block;
   max-width: 100%;
 }
@@ -50,9 +48,7 @@ button {
   background: none;
 }
 
-input,
-textarea,
-select {
+input, textarea, select {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -102,6 +98,7 @@ p {
   margin-right: auto;
   padding-left: var(--space-5);
   padding-right: var(--space-5);
+  max-width: var(--max-width-content);
 }
 
 @media (min-width: 768px) {
@@ -115,5 +112,51 @@ p {
   .container {
     padding-left: var(--space-12);
     padding-right: var(--space-12);
+  }
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: inline-block;
+  margin-bottom: var(--space-3);
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--color-accent);
+  margin-right: var(--space-3);
+  vertical-align: middle;
+}
+
+.act-number {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+  margin: 0;
+  border: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
