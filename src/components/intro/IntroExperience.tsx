@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { eventConfig } from '../../data/eventConfig'
 import './IntroExperience.css'
 
 interface IntroExperienceProps {
@@ -11,9 +12,9 @@ type IntroPhase = 'time' | 'institution' | 'department' | 'reveal' | 'done'
 
 const PHASE_DURATIONS = {
   time: 1200,
-  institution: 1100,
-  department: 1000,
-  reveal: 1400,
+  institution: 2000,
+  department: 1600,
+  reveal: 1600,
 }
 
 export function IntroExperience({ onComplete }: IntroExperienceProps) {
@@ -90,18 +91,19 @@ export function IntroExperience({ onComplete }: IntroExperienceProps) {
               <>
                 <video
                   className={`intro__video${videoLoaded && !videoError ? ' intro__video--ready' : ''}`}
-                  src="/media/homeBannerVideo.mp4"
+                  src={eventConfig.media.campusVideo}
                   muted
+                  autoPlay
                   playsInline
                   loop
-                  preload="metadata"
-                  poster="/media/home_welcome.jpeg"
-                  onLoadedData={() => setVideoLoaded(true)}
-                  onError={() => setVideoError(true)}
+                  preload="auto"
+                  poster={eventConfig.media.campusImage}
+                  onLoadedData={() => { setVideoLoaded(true); console.log('[Intro] Video loaded successfully') }}
+                  onError={() => { setVideoError(true); console.warn('[Intro] Video failed to load:', eventConfig.media.campusVideo) }}
                 />
                 <img
                   className={`intro__fallback-img${(!videoLoaded || videoError) && imageLoaded ? ' intro__fallback-img--visible' : ''}`}
-                  src="/media/home_welcome.jpeg"
+                  src={eventConfig.media.campusImage}
                   alt=""
                   onLoad={() => setImageLoaded(true)}
                   onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
@@ -137,8 +139,8 @@ export function IntroExperience({ onComplete }: IntroExperienceProps) {
                 <div className="intro__inst-logo-wrap">
                   <img
                     className="intro__inst-logo"
-                    src="/media/logo2.jpg"
-                    alt="PESIAMS"
+                    src={eventConfig.media.logo}
+                    alt={eventConfig.institutionShort}
                     onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
                   />
                 </div>

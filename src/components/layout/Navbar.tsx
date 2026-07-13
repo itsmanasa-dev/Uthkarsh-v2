@@ -17,7 +17,7 @@ const navItems = [
   { label: 'People', href: '#faculty' },
   { label: 'Brief', href: '#guidelines' },
   { label: 'Venue', href: '#venue' },
-]
+] as const
 
 export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
@@ -59,6 +59,16 @@ export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {
             <Link to="/" className="navbar__link">
               Home
             </Link>
+          )}
+          {eventConfig.documents.brochureUrl && (
+            <a
+              href={eventConfig.documents.brochureUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="navbar__link"
+            >
+              Brochure
+            </a>
           )}
           <Link to="/register" className="navbar__cta">
             Register
@@ -117,6 +127,17 @@ export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: reducedMotion ? 0 : 0.35, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 >
+                  {eventConfig.documents.brochureUrl && (
+                    <a
+                      href={eventConfig.documents.brochureUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="navbar__mobile-outline"
+                      onClick={() => onMenuToggle(false)}
+                    >
+                      View Brochure
+                    </a>
+                  )}
                   <Link
                     to="/register"
                     className="navbar__mobile-register"

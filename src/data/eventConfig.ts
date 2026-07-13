@@ -30,4 +30,19 @@ export const eventConfig = {
     participation: 'Participation certificates are delivered digitally by email.',
     winner: 'Winner and runner-up certificates are provided as hard copies.',
   },
+
+  media: {
+    campusVideo: '/media/homeBannerVideo.mp4',
+    campusImage: '/media/home_welcome.jpeg',
+    logo: '/media/logo2.jpg',
+  },
+
+  documents: {
+    brochureUrl: null as string | null,
+  },
+
+  venue: {
+    address: 'PES Institute of Advanced Management Studies, Shivamogga, Karnataka',
+    mapsQuery: 'PES+Institute+of+Advanced+Management+Studies+Shivamogga',
+  },
 } as const

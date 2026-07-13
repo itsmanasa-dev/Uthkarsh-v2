@@ -2,6 +2,7 @@
 import { Accordion } from '../ui/Accordion'
 import { rules as rulesData } from '../../data/rules'
 import { faqItems } from '../../data/faq'
+import { eventConfig } from '../../data/eventConfig'
 import './Guidelines.css'
 
 export function Guidelines() {
@@ -38,25 +39,35 @@ export function Guidelines() {
         </motion.div>
 
         <div className="event-brief__sections">
-          <motion.div
-            className="event-brief__section"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <h3 className="event-brief__section-title">Guidelines</h3>
-            <p className="event-brief__placeholder">
-              Official guidelines document coming soon.
-            </p>
-          </motion.div>
+          {eventConfig.documents.brochureUrl && (
+            <motion.div
+              className="event-brief__section event-brief__section--brochure"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <h3 className="event-brief__section-title">Official Brochure</h3>
+              <p className="event-brief__brochure-desc">
+                Everything participants need to know about {eventConfig.eventName}.
+              </p>
+              <a
+                href={eventConfig.documents.brochureUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="event-brief__brochure-cta"
+              >
+                View Brochure
+              </a>
+            </motion.div>
+          )}
 
           <motion.div
             className="event-brief__section"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
             <h3 className="event-brief__section-title">Prize Pool</h3>
             <p className="event-brief__placeholder">

@@ -1,19 +1,89 @@
 .institution {
   padding: var(--section-space-lg) 0;
-  background: var(--color-bg);
+  background: var(--color-surface);
+}
+
+.institution__header {
+  margin-bottom: var(--space-8);
 }
 
 .institution__layout {
   display: grid;
-  gap: var(--space-8);
-  align-items: start;
+  gap: var(--space-10);
+  align-items: center;
 }
 
 @media (min-width: 768px) {
   .institution__layout {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr;
     gap: var(--space-16);
   }
+}
+
+.institution__media {
+  position: relative;
+}
+
+.institution__frame {
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.institution__campus-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.institution__frame-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(transparent, rgba(9, 9, 9, 0.6));
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.institution__frame-placeholder {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  gap: var(--space-2);
+}
+
+.institution__frame-placeholder-text {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-lg);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-muted);
+}
+
+.institution__frame-placeholder-sub {
+  font-size: var(--text-micro);
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+}
+
+.institution__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
 .institution__name {
@@ -22,14 +92,46 @@
   font-weight: 800;
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-tight);
-  margin-bottom: var(--space-2);
   max-width: 24rem;
 }
 
 .institution__location {
   font-size: var(--text-body-md);
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-6);
+}
+
+.institution__logo-wrap {
+  max-width: 10rem;
+}
+
+.institution__logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.institution__logo-box {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-6);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.institution__logo-text {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-lg);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.institution__logo-sub {
+  font-size: var(--text-micro);
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
 }
 
 .institution__dept {
@@ -53,64 +155,9 @@
   color: var(--color-text);
 }
 
-.institution__aside {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-
-.institution__logo-box {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-1);
-  padding: var(--space-4) var(--space-6);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-}
-
-.institution__logo-text {
-  font-family: var(--font-display);
-  font-size: var(--text-heading-lg);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
-}
-
-.institution__logo-sub {
-  font-size: var(--text-micro);
-  color: var(--color-text-muted);
-  letter-spacing: 0.06em;
-}
-
 .institution__blurb {
   font-size: var(--text-body-sm);
   line-height: var(--leading-relaxed);
   color: var(--color-text-secondary);
-  max-width: 20rem;
-}
-
-.institution__logo {
-  max-width: 12rem;
-  height: auto;
-  display: block;
-  border: 1px solid var(--color-border);
-  padding: var(--space-3);
-  background: var(--color-surface);
-}
-
-.institution__campus {
-  margin-top: var(--space-6);
-  border-radius: 2px;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  max-width: 28rem;
-}
-
-.institution__campus-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  max-width: 24rem;
 }
