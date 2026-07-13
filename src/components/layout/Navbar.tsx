@@ -45,9 +45,12 @@ export function Navbar({ onMenuToggle, menuOpen }: NavbarProps) {
       )}
 
       <div className="navbar__inner container">
-        <Link to="/" className="navbar__logo" aria-label={`${eventConfig.eventName} homepage`}>
-          <span className="navbar__logo-dot" />
-          <span className="navbar__logo-name">{eventConfig.eventName}</span>
+        <Link to="/" className="navbar__logo" aria-label="PES Institute of Advanced Management Studies">
+          <img
+            className="navbar__logo-img"
+            src={eventConfig.media.logo}
+            alt="PES Institute of Advanced Management Studies"
+          />
         </Link>
 
         <nav className="navbar__desktop" aria-label="Main navigation">

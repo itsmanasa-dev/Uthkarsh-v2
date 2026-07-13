@@ -77,29 +77,6 @@ export function Hero() {
       </div>
 
       <div className="container">
-        <div className="hero__top-bar">
-          <div className="hero__top-left">
-            <span className="hero__top-dot" />
-            <span className="hero__top-label">UTKARSH PROTOCOL</span>
-          </div>
-          <div className="hero__top-right">
-            <span className="hero__top-item">
-              <span className="hero__top-meta">STATUS</span>
-              <span className="hero__top-val hero__top-val--active">ACTIVE</span>
-            </span>
-            <span className="hero__top-divider" />
-            <span className="hero__top-item">
-              <span className="hero__top-meta">SYSTEM TIME</span>
-              <span className="hero__top-val">09:00</span>
-            </span>
-            <span className="hero__top-divider" />
-            <span className="hero__top-item">
-              <span className="hero__top-meta">CAPACITY</span>
-              <span className="hero__top-val">{eventConfig.maximumTeams} TEAMS</span>
-            </span>
-          </div>
-        </div>
-
         <div className="hero__layout">
           <div className="hero__main">
             {/* 0ms–300ms: Badge with terminal left-to-right wipe */}
