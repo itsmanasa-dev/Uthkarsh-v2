@@ -33,59 +33,86 @@ export function Guidelines() {
     {
       id: 'brochure',
       title: '01 // OFFICIAL BROCHURE',
-      content: !brochureError ? (
-        <div className="event-brief__brochure">
-          <div className="event-brief__brochure-image-wrap">
-            <img
-              className="event-brief__brochure-image"
-              src={eventConfig.documents.brochureImage}
-              alt="Official UTKARSH 26 inter-college hackathon brochure"
-              onError={() => setBrochureError(true)}
-              loading="lazy"
-            />
+      content: (
+        <div className="event-brief__documents">
+          {!brochureError ? (
+            <div className="event-brief__brochure">
+              <div className="event-brief__brochure-image-wrap">
+                <img
+                  className="event-brief__brochure-image"
+                  src={eventConfig.documents.brochureImage}
+                  alt="Official UTKARSH 26 inter-college hackathon brochure"
+                  onError={() => setBrochureError(true)}
+                  loading="lazy"
+                />
+              </div>
+              <p className="event-brief__brochure-desc">
+                Everything you need to know about UTKARSH 26 \u2014 event schedule, eligibility, team requirements, rules, venue and registration information.
+              </p>
+              <div className="event-brief__brochure-actions">
+                <a
+                  href={eventConfig.documents.brochureImage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="event-brief__brochure-cta"
+                >
+                  <span>View Official Brochure</span>
+                  <span className="event-brief__brochure-arrow">{'\u2197'}</span>
+                </a>
+              </div>
+            </div>
+          ) : (
+            <div className="event-brief__brochure event-brief__brochure--pending">
+              <p className="event-brief__placeholder">The official brochure is being finalised. Check back soon for the complete event guide.</p>
+            </div>
+          )}
+          <div className="event-brief__guidelines-card">
+            <span className="event-brief__guidelines-card-label">GUIDELINES PDF</span>
+            <span className="event-brief__guidelines-card-status">Coming Soon</span>
           </div>
-          <p className="event-brief__brochure-desc">
-            Everything you need to know about UTKARSH 26 \u2014 event schedule, eligibility, team requirements, rules, venue and registration information.
-          </p>
-          <div className="event-brief__brochure-actions">
-            <a
-              href={eventConfig.documents.brochureImage}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="event-brief__brochure-cta"
-            >
-              <span>View Official Brochure</span>
-              <span className="event-brief__brochure-arrow">{'\u2197'}</span>
-            </a>
-          </div>
-        </div>
-      ) : (
-        <div className="event-brief__brochure event-brief__brochure--pending">
-          <p className="event-brief__placeholder">The official brochure will be available soon. Please add <code>/media/broucher.jpg</code> to the public assets.</p>
         </div>
       ),
     },
     {
       id: 'prize',
-      title: '02 // PRIZE POOL',
+      title: '02 // PRIZE POOL — UNLOCKED',
       content: (
-        <>
-          <p className="event-brief__placeholder">To be revealed. Winners receive certificates and recognition.</p>
-          <div className="event-brief__categories">
-            <div className="event-brief__cat">
-              <span className="event-brief__cat-num">01</span>
-              <span className="event-brief__cat-label">Winner</span>
+        <div className="event-brief__prizes">
+          <div className="event-brief__prizes-total">
+            <span className="event-brief__prizes-amount">{eventConfig.prizes.totalFormatted}</span>
+            <span className="event-brief__prizes-total-label">TOTAL CASH PRIZES</span>
+          </div>
+          <div className="event-brief__prizes-grid">
+            <div className="event-brief__prize-card event-brief__prize-card--first">
+              <div className="event-brief__prize-card-header">
+                <span className="event-brief__prize-card-num">01</span>
+                <span className="event-brief__prize-card-status">CHAMPION</span>
+              </div>
+              <span className="event-brief__prize-card-amount">{eventConfig.prizes.first.formatted}</span>
+              <span className="event-brief__prize-card-label">{eventConfig.prizes.first.label}</span>
             </div>
-            <div className="event-brief__cat">
-              <span className="event-brief__cat-num">02</span>
-              <span className="event-brief__cat-label">Runner-up</span>
+            <div className="event-brief__prize-card event-brief__prize-card--second">
+              <div className="event-brief__prize-card-header">
+                <span className="event-brief__prize-card-num">02</span>
+                <span className="event-brief__prize-card-status">RUNNER-UP</span>
+              </div>
+              <span className="event-brief__prize-card-amount">{eventConfig.prizes.second.formatted}</span>
+              <span className="event-brief__prize-card-label">{eventConfig.prizes.second.label}</span>
             </div>
-            <div className="event-brief__cat">
-              <span className="event-brief__cat-num">03</span>
-              <span className="event-brief__cat-label">Recognition</span>
+            <div className="event-brief__prize-card event-brief__prize-card--goodies">
+              <div className="event-brief__prize-card-header">
+                <span className="event-brief__prize-card-num">03</span>
+                <span className="event-brief__prize-card-status">BONUS</span>
+              </div>
+              <div className="event-brief__prize-card-items">
+                {eventConfig.prizes.items.map((item, i) => (
+                  <span key={i} className="event-brief__prize-card-item">{item}</span>
+                ))}
+              </div>
+              <span className="event-brief__prize-card-label">PERKS</span>
             </div>
           </div>
-        </>
+        </div>
       ),
     },
     {

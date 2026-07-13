@@ -1,4 +1,5 @@
 ﻿import { useRef, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { eventConfig } from '../../data/eventConfig'
@@ -108,6 +109,11 @@ export function Statistics() {
           <span className="status-dot status-dot--active" />
           <span className="stats__footer-text">{eventConfig.eventDate} — {eventConfig.maximumTeams} teams max</span>
         </div>
+        <Link to="/#guidelines" className="stats__prize-teaser">
+          <span className="stats__prize-teaser-pulse" />
+          <span className="stats__prize-teaser-text">{eventConfig.prizes.totalFormatted} CASH PRIZES // EXCLUSIVE GOODIES</span>
+          <span className="stats__prize-teaser-arrow">{'\u2192'}</span>
+        </Link>
       </div>
     </section>
   )

@@ -34,6 +34,14 @@ export const eventConfig = {
     winner: 'Winner and runner-up certificates are provided as hard copies.',
   },
 
+  prizes: {
+    totalFormatted: '₹15,000+',
+    first: { formatted: '₹10,000', label: 'FIRST PRIZE' },
+    second: { formatted: '₹5,000', label: 'SECOND PRIZE' },
+    items: ['Exclusive Goodies', 'Winner & Runner-Up Certificates'] as const,
+    goodiesLabel: 'Exclusive Goodies',
+  },
+
   media: {
     campusVideo: '/media/homeBannerVideo.mp4',
     campusImage: '/media/home_welcome.jpeg',
@@ -43,6 +51,7 @@ export const eventConfig = {
   documents: {
     brochureUrl: null as string | null,
     brochureImage: '/media/broucher.jpg',
+    guidelinesPdf: null as string | null,
   },
 
   venue: {

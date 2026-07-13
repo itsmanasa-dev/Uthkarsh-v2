@@ -112,24 +112,173 @@
   font-family: var(--font-mono); font-size: var(--text-body-sm);
 }
 
-/* Categories */
-.event-brief__categories {
-  display: flex; gap: var(--space-3);
-  margin-top: var(--space-3);
-  flex-wrap: wrap;
+/* Documents wrapper */
+.event-brief__documents {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
-.event-brief__cat {
-  display: flex; align-items: center; gap: var(--space-2);
-  padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--grid-grey);
+/* Guidelines card */
+.event-brief__guidelines-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border: 1px dashed rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.02);
+}
+
+.event-brief__guidelines-card-label {
   font-family: var(--font-mono);
   font-size: var(--text-micro);
   letter-spacing: var(--tracking-mono);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
 }
 
-.event-brief__cat-num { color: var(--color-accent); }
-.event-brief__cat-label { color: var(--color-text-secondary); }
+.event-brief__guidelines-card-status {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+/* Prizes */
+.event-brief__prizes-total {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.event-brief__prizes-amount {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-energy);
+  line-height: 1;
+}
+
+.event-brief__prizes-total-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.event-brief__prizes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .event-brief__prizes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .event-brief__prizes-grid {
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+}
+
+.event-brief__prize-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-5);
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  position: relative;
+  transition: border-color var(--duration-fast) var(--ease-out),
+              background var(--duration-fast) var(--ease-out);
+}
+
+.event-brief__prize-card:hover {
+  border-color: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.04);
+}
+
+.event-brief__prize-card--first {
+  border-color: rgba(255, 150, 0, 0.25);
+  background: rgba(255, 150, 0, 0.04);
+}
+
+.event-brief__prize-card--first:hover {
+  border-color: rgba(255, 150, 0, 0.5);
+  background: rgba(255, 150, 0, 0.08);
+}
+
+.event-brief__prize-card--first .event-brief__prize-card-amount {
+  color: var(--color-energy);
+}
+
+.event-brief__prize-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.event-brief__prize-card-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-mono);
+}
+
+.event-brief__prize-card-status {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+.event-brief__prize-card-amount {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  font-weight: 900;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.event-brief__prize-card-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.event-brief__prize-card-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+}
+
+.event-brief__prize-card-item {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.event-brief__prize-card-item::before {
+  content: '\2014 ';
+  color: var(--color-accent);
+  opacity: 0.4;
+}
 
 /* List */
 .event-brief__list {
