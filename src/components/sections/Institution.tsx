@@ -1,8 +1,12 @@
-﻿import { motion } from 'motion/react'
+﻿import { useState } from 'react'
+import { motion } from 'motion/react'
 import { eventConfig } from '../../data/eventConfig'
 import './Institution.css'
 
 export function Institution() {
+  const [logoError, setLogoError] = useState(false)
+  const [campusError, setCampusError] = useState(false)
+
   return (
     <section className="institution" id="institution">
       <div className="container">
@@ -25,6 +29,16 @@ export function Institution() {
               <h3 className="institution__dept-heading">Organised by</h3>
               <p className="institution__dept-name">{eventConfig.department}</p>
             </div>
+            {!campusError && (
+              <div className="institution__campus">
+                <img
+                  src="/media/home_welcome.jpeg"
+                  alt="Campus"
+                  className="institution__campus-img"
+                  onError={() => setCampusError(true)}
+                />
+              </div>
+            )}
           </motion.div>
 
           <motion.div
@@ -34,10 +48,19 @@ export function Institution() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="institution__logo-box">
-              <span className="institution__logo-text">PESIAMS</span>
-              <span className="institution__logo-sub">Since 2008</span>
-            </div>
+            {!logoError ? (
+              <img
+                className="institution__logo"
+                src="/media/logo2.jpg"
+                alt={eventConfig.institutionShort}
+                onError={() => setLogoError(true)}
+              />
+            ) : (
+              <div className="institution__logo-box">
+                <span className="institution__logo-text">{eventConfig.institutionShort}</span>
+                <span className="institution__logo-sub">Since 2008</span>
+              </div>
+            )}
             <p className="institution__blurb">
               PES Institute of Advanced Management Studies has been committed to academic
               excellence in management and computer applications education since 2008.

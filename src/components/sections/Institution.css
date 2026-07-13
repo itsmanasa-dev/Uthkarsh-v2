@@ -89,3 +89,28 @@
   color: var(--color-text-secondary);
   max-width: 20rem;
 }
+
+.institution__logo {
+  max-width: 12rem;
+  height: auto;
+  display: block;
+  border: 1px solid var(--color-border);
+  padding: var(--space-3);
+  background: var(--color-surface);
+}
+
+.institution__campus {
+  margin-top: var(--space-6);
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  max-width: 28rem;
+}
+
+.institution__campus-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
