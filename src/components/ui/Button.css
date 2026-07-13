@@ -19,7 +19,7 @@
 
 .btn--primary {
   background: var(--color-text);
-  color: var(--surface);
+  color: var(--color-surface);
   border: 1px solid var(--color-text);
 }
 
@@ -36,7 +36,7 @@
 
 .btn--secondary:hover:not(:disabled) {
   background: var(--color-text);
-  color: var(--surface);
+  color: var(--color-surface);
 }
 
 .btn--ghost {

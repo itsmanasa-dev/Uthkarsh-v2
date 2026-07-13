@@ -16,10 +16,10 @@ export function Institution() {
         <div className="institution__layout">
           <motion.div
             className="institution__media"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}
+            whileInView={{ clipPath: 'inset(0 0 0 0)', opacity: 1 }}
             viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="institution__frame">
               <div className="institution__frame-top">

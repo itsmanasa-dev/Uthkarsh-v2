@@ -1,3 +1,4 @@
+import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { contactConfig, hasContactData, hasAnyCoordinator } from '../../data/contact'
 import './ContactSection.css'
@@ -77,16 +78,28 @@ export function ContactSection() {
           <span className="contact__signal" />
         </div>
 
-        <div className="contact__intro">
+        <motion.div
+          className="contact__intro"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           <p className="contact__intro-text">
             Questions about registration, payment, team requirements or the event?
             <br />
             Reach the UTKARSH 26 organising team directly.
           </p>
-        </div>
+        </motion.div>
 
         {(facultyWithData || studentWithData) && (
-          <div className="contact__directory">
+          <motion.div
+            className="contact__directory"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          >
             {facultyWithData && (
               <div className="contact__group">
                 <h3 className="contact__group-title">FACULTY COORDINATORS</h3>
@@ -108,11 +121,17 @@ export function ContactSection() {
                 </div>
               </div>
             )}
-          </div>
+          </motion.div>
         )}
 
         {!facultyWithData && !studentWithData && (
-          <div className="contact__pending">
+          <motion.div
+            className="contact__pending"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="contact__pending-grid">
               <div className="contact__pending-line" />
               <div className="contact__pending-line contact__pending-line--short" />
@@ -121,10 +140,16 @@ export function ContactSection() {
             <p className="contact__pending-text">
               Coordinator contact details will be available here once confirmed by the organising team.
             </p>
-          </div>
+          </motion.div>
         )}
 
-        <div className="contact__resources">
+        <motion.div
+          className="contact__resources"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div className="contact__resource">
             <span className="contact__resource-label">COMMON QUESTIONS</span>
             <Link to="/#guidelines" className="contact__resource-link">
@@ -143,37 +168,50 @@ export function ContactSection() {
               Registration Portal {'\u2192'}
             </Link>
           </div>
-        </div>
+        </motion.div>
 
-        {contactConfig.official.email || contactConfig.official.phone ? (
-          <div className="contact__official">
-            <span className="contact__official-dot" />
-            <div className="contact__official-info">
-              {contactConfig.official.email && (
-                <a href={`mailto:${contactConfig.official.email}`} className="contact__official-link">
-                  {contactConfig.official.email}
-                </a>
-              )}
-              {contactConfig.official.phone && (
-                <a href={`tel:${contactConfig.official.phone}`} className="contact__official-link">
-                  {contactConfig.official.phone}
-                </a>
-              )}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {contactConfig.official.email || contactConfig.official.phone ? (
+            <div className="contact__official">
+              <span className="contact__official-dot" />
+              <div className="contact__official-info">
+                {contactConfig.official.email && (
+                  <a href={`mailto:${contactConfig.official.email}`} className="contact__official-link">
+                    {contactConfig.official.email}
+                  </a>
+                )}
+                {contactConfig.official.phone && (
+                  <a href={`tel:${contactConfig.official.phone}`} className="contact__official-link">
+                    {contactConfig.official.phone}
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className="contact__official contact__official--pending">
-            <span className="contact__official-dot contact__official-dot--pending" />
-            <span className="contact__official-text">Official contact details pending confirmation.</span>
-          </div>
-        )}
+          ) : (
+            <div className="contact__official contact__official--pending">
+              <span className="contact__official-dot contact__official-dot--pending" />
+              <span className="contact__official-text">Official contact details pending confirmation.</span>
+            </div>
+          )}
+        </motion.div>
 
         {showContactLink && (
-          <div className="contact__details-link">
+          <motion.div
+            className="contact__details-link"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+          >
             <Link to="/contact" className="contact__details-cta">
               View all contact information {'\u2192'}
             </Link>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

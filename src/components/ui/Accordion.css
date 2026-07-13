@@ -8,7 +8,7 @@
 }
 
 .accordion__item:hover {
-  background: rgba(9, 9, 9, 0.02);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .accordion__trigger {

@@ -1,6 +1,6 @@
 export const eventConfig = {
   eventName: 'UTKARSH 26',
-  eventDate: 'DATE TO BE CONFIRMED',
+  eventDate: 'DATE // TO BE ANNOUNCED',
   institution: 'PES Institute of Advanced Management Studies',
   institutionShort: 'PESIAMS',
   institutionFull: 'PES Institute of Advanced Management Studies',

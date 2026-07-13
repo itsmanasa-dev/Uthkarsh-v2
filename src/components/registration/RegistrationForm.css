@@ -174,7 +174,7 @@
 
 .reg-actions__btn--next {
   background: var(--color-text);
-  color: var(--void);
+  color: var(--color-surface);
   border: 1px solid var(--color-text);
 }
 
@@ -189,7 +189,9 @@
 .reg-actions__btn--submit:hover { background: var(--color-energy); }
 
 .reg-actions__btn:disabled { opacity: 0.4; cursor: not-allowed; }
-.reg-actions__btn:disabled:hover { all: unset; opacity: 0.4; cursor: not-allowed; }
+.reg-actions__btn--prev:disabled:hover { opacity: 0.4; cursor: not-allowed; }
+.reg-actions__btn--next:disabled:hover { opacity: 0.4; cursor: not-allowed; }
+.reg-actions__btn--submit:disabled:hover { opacity: 0.4; cursor: not-allowed; background: var(--color-accent); border-color: var(--color-accent); color: var(--pure); }
 
 .reg-review { margin-bottom: var(--space-8); }
 

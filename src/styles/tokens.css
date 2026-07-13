@@ -101,4 +101,5 @@
   --color-text-muted: #6B6B66;
   --color-border: var(--line);
   --color-surface: var(--pure);
+  background-color: var(--color-light-section);
 }
