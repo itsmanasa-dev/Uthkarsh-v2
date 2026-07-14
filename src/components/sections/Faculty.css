@@ -53,18 +53,27 @@
 
 .faculty__card {
   display: flex; flex-direction: column; gap: var(--space-3);
-  border: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   padding: var(--space-4);
-  transition: border-color var(--duration-fast) var(--ease-out);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .faculty__card:hover {
-  border-color: rgba(255,77,0,0.3);
+  border-color: rgba(77, 124, 254, 0.3);
+  box-shadow: 0 0 15px var(--glow-blue);
 }
 
 .faculty__card--leader {
-  border-color: rgba(255,77,0,0.15);
+  border-color: rgba(139, 92, 246, 0.25);
+  box-shadow: 0 0 12px var(--glow-purple);
+}
+
+.faculty__card--leader:hover {
+  border-color: var(--violet-purple);
+  box-shadow: 0 0 22px var(--glow-purple);
 }
 
 .faculty__index {

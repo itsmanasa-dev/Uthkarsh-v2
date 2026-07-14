@@ -46,9 +46,11 @@
 
 .venue__details {
   display: flex; flex-direction: column; gap: var(--space-2);
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   padding: var(--space-4);
   max-width: 20rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .venue__detail {
@@ -64,7 +66,7 @@
 .venue__maps-cta {
   display: inline-flex; align-items: center; gap: var(--space-2);
   height: 2.75rem; padding: 0 var(--space-5);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(77, 124, 254, 0.25);
   color: var(--color-text);
   font-family: var(--font-display);
   font-size: var(--text-body-sm); font-weight: 600;
@@ -72,8 +74,9 @@
 }
 
 .venue__maps-cta:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  border-color: var(--violet-purple);
+  color: var(--color-text);
+  box-shadow: 0 0 10px var(--glow-purple);
 }
 
 .venue__maps-arrow { font-family: var(--font-mono); }
@@ -82,11 +85,12 @@
 .venue__map-wrap { position: relative; }
 
 .venue__map-frame {
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--color-border);
   overflow: hidden;
   background: var(--void);
   position: relative;
   z-index: 1;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
 .venue__map-top {
@@ -94,8 +98,8 @@
   padding: var(--space-2) var(--space-3);
   font-family: var(--font-mono); font-size: var(--text-micro);
   color: var(--color-text-muted); letter-spacing: var(--tracking-mono);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 
 .venue__map-coord { color: var(--color-text-secondary); }
@@ -142,5 +146,5 @@
   padding: var(--space-2) var(--space-3);
   font-family: var(--font-mono); font-size: var(--text-micro);
   color: var(--color-text-muted);
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid var(--color-border);
 }

@@ -159,7 +159,7 @@
   gap: var(--space-1);
   margin-bottom: var(--space-5);
   padding-bottom: var(--space-4);
-  border-bottom: 1px solid rgba(200, 169, 81, 0.15);
+  border-bottom: 1px solid var(--color-border);
   position: relative;
 }
 
@@ -169,8 +169,8 @@
   left: 0;
   width: 5rem;
   height: 2px;
-  background: var(--color-gold);
-  opacity: 0.5;
+  background: var(--electric-blue);
+  opacity: 0.8;
 }
 
 .event-brief__prizes-amount {
@@ -178,9 +178,9 @@
   font-size: clamp(2.75rem, 14vw, 5rem);
   font-weight: 900;
   letter-spacing: var(--tracking-tight);
-  color: var(--color-gold);
+  color: var(--pure);
   line-height: 1;
-  text-shadow: 0 0 50px rgba(200, 169, 81, 0.08);
+  text-shadow: 0 0 40px var(--glow-blue);
   font-feature-settings: 'tnum';
   word-break: break-word;
 }
@@ -189,7 +189,7 @@
   font-family: var(--font-mono);
   font-size: var(--text-label);
   letter-spacing: var(--tracking-mono);
-  color: var(--color-accent);
+  color: var(--color-text-secondary);
   text-transform: uppercase;
 }
 
@@ -220,18 +220,19 @@
   flex-direction: column;
   gap: var(--space-1);
   padding: var(--space-5);
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   position: relative;
   overflow: hidden;
   transition: border-color var(--duration-fast) var(--ease-out),
               background var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out),
               transform var(--duration-fast) var(--ease-out);
 }
 
 .event-brief__prize-card:hover {
-  border-color: rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .event-brief__prize-card-header {
@@ -278,22 +279,24 @@
 /* --- First Prize (Gold / Champion) --- */
 
 .event-brief__prize-card--first {
-  border-color: rgba(200, 169, 81, 0.25);
-  background: rgba(200, 169, 81, 0.04);
+  border-color: rgba(77, 124, 254, 0.25);
+  background: rgba(77, 124, 254, 0.03);
+  box-shadow: 0 0 15px var(--glow-blue);
 }
 
 .event-brief__prize-card--first:hover {
-  border-color: rgba(200, 169, 81, 0.5);
-  background: rgba(200, 169, 81, 0.08);
+  border-color: var(--electric-blue);
+  background: rgba(77, 124, 254, 0.06);
+  box-shadow: 0 0 25px var(--glow-blue);
   transform: translateY(-2px);
 }
 
 .event-brief__prize-card--first .event-brief__prize-card-amount {
-  color: var(--color-gold);
+  color: var(--pure);
 }
 
 .event-brief__prize-card--first .event-brief__prize-card-status {
-  color: var(--color-gold-muted);
+  color: var(--electric-blue);
 }
 
 /* Gold scanning line — plays once on entrance */
@@ -303,7 +306,7 @@
   left: -100%;
   width: 60%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--electric-blue), transparent);
   opacity: 0;
   pointer-events: none;
 }
@@ -336,21 +339,29 @@
 /* --- Second Prize --- */
 
 .event-brief__prize-card--second {
-  border-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(139, 92, 246, 0.2);
+  background: rgba(139, 92, 246, 0.02);
 }
 
 .event-brief__prize-card--second:hover {
-  transform: translateY(-1px);
+  border-color: var(--violet-purple);
+  background: rgba(139, 92, 246, 0.05);
+  box-shadow: 0 0 20px var(--glow-purple);
+  transform: translateY(-2px);
 }
 
 /* --- Bonus / Perks card --- */
 
 .event-brief__prize-card--bonus {
-  border-color: var(--color-gold-subtle);
+  border-color: rgba(139, 92, 246, 0.16);
+  background: rgba(139, 92, 246, 0.02);
 }
 
 .event-brief__prize-card--bonus:hover {
-  border-color: rgba(200, 169, 81, 0.3);
+  border-color: var(--violet-purple);
+  background: rgba(139, 92, 246, 0.05);
+  box-shadow: 0 0 20px var(--glow-purple);
+  transform: translateY(-2px);
 }
 
 .event-brief__prize-card-bonus-grid {

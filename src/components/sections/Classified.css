@@ -10,7 +10,7 @@
   position: absolute; inset: 0;
   background: repeating-linear-gradient(
     0deg, transparent, transparent 3px,
-    rgba(255,77,0,0.012) 3px, rgba(255,77,0,0.012) 6px
+    rgba(77, 124, 254, 0.008) 3px, rgba(77, 124, 254, 0.008) 6px
   );
   pointer-events: none;
 }
@@ -70,9 +70,11 @@
 
 .classified__status-grid {
   display: flex; flex-direction: column; gap: var(--space-2);
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   padding: var(--space-4);
   max-width: 22rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .classified__status-row {
@@ -80,7 +82,7 @@
   font-family: var(--font-mono); font-size: var(--text-micro);
   letter-spacing: var(--tracking-mono); text-transform: uppercase;
   padding: var(--space-2) 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .classified__status-row:last-child { border-bottom: none; }
@@ -92,7 +94,7 @@
 
 .classified__status-value--sealed {
   display: flex; align-items: center; gap: var(--space-2);
-  color: var(--color-accent);
+  color: var(--soft-coral);
 }
 
 .classified__redacted {
@@ -117,15 +119,16 @@
 
 /* Terminal panel */
 .classified__terminal {
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 
 .classified__terminal-header {
   display: flex; align-items: center; gap: var(--space-2);
   padding: var(--space-3) var(--space-4);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .classified__terminal-dot {

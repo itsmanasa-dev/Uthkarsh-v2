@@ -49,16 +49,16 @@
 .reg-field__input:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(255, 77, 0, 0.08);
+  box-shadow: 0 0 0 3px rgba(77, 124, 254, 0.12);
 }
 
 .reg-field__input--error {
-  border-color: var(--color-accent);
+  border-color: var(--soft-coral);
 }
 
 .reg-field__error {
   font-size: var(--text-body-sm);
-  color: var(--color-accent);
+  color: var(--soft-coral);
   margin-top: 2px;
   font-weight: 500;
 }
@@ -132,10 +132,10 @@
 .reg-member__remove:hover { text-decoration: underline; }
 
 .reg-step__notice {
-  background: rgba(255,77,0,0.04);
+  background: rgba(77, 124, 254, 0.04);
   padding: var(--space-4);
   margin-bottom: var(--space-6);
-  border-left: 3px solid var(--color-accent);
+  border-left: 3px solid var(--electric-blue);
 }
 
 .reg-step__notice-text {
@@ -254,7 +254,7 @@
 }
 
 .reg-error-banner {
-  background: var(--color-accent);
+  background: var(--soft-coral);
   color: var(--pure);
   padding: var(--space-3) var(--space-4);
   font-size: var(--text-body-sm);

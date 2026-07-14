@@ -9,9 +9,9 @@
 }
 
 .navbar--scrolled {
-  background: rgba(5, 5, 5, 0.92);
+  background: rgba(7, 8, 18, 0.85);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .navbar__progress {
@@ -174,13 +174,14 @@
   font-family: var(--font-display);
   font-size: var(--text-body-sm); font-weight: 600;
   color: var(--color-text);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(77, 124, 254, 0.25);
   transition: all var(--duration-fast) var(--ease-out);
   width: 100%;
 }
 
 .navbar__mobile-outline:hover {
-  border-color: var(--color-accent); color: var(--color-accent);
+  border-color: var(--violet-purple); color: var(--color-text);
+  box-shadow: 0 0 10px var(--glow-purple);
 }
 
 .navbar__mobile-register {

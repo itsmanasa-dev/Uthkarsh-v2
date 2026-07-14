@@ -1,21 +1,23 @@
 :root {
-  --void: #050505;
-  --deep: #090909;
-  --charcoal: #1A1A18;
-  --gunmetal: #151514;
-  --warm-black: #0A0A09;
-  --paper: #F7F7F2;
+  --void: #070812;
+  --deep: #0D0E1A;
+  --charcoal: #121422;
+  --gunmetal: #121422;
+  --warm-black: #070812;
+  --paper: #F5F3FF;
   --pure: #FFFFFF;
-  --graphite: #777770;
-  --muted: #8B8B84;
-  --grid-grey: #252525;
-  --line: #D8D8D2;
-  --orange: #FF4D00;
-  --energy: #FF6A00;
-  --gold: #C8A951;
-  --gold-muted: #B8963E;
-  --amber: #A67C00;
-  --gold-subtle: rgba(200, 169, 81, 0.12);
+  --graphite: #A7A3B8;
+  --muted: #77738A;
+  --grid-grey: rgba(167, 163, 184, 0.16);
+  --line: rgba(167, 163, 184, 0.16);
+  
+  --electric-blue: #4D7CFE;
+  --violet-purple: #8B5CF6;
+  --soft-coral: #FF6B7A;
+  
+  --glow-blue: rgba(77, 124, 254, 0.20);
+  --glow-purple: rgba(139, 92, 246, 0.18);
+  --glow-coral: rgba(255, 107, 122, 0.14);
 
   --color-bg: var(--void);
   --color-surface: var(--deep);
@@ -25,16 +27,17 @@
   --color-text: var(--paper);
   --color-text-secondary: var(--graphite);
   --color-text-muted: var(--muted);
-  --color-accent: var(--orange);
-  --color-energy: var(--energy);
-  --color-gold: var(--gold);
-  --color-gold-muted: var(--gold-muted);
-  --color-amber: var(--amber);
-  --color-gold-subtle: var(--gold-subtle);
+  
+  --color-accent: var(--electric-blue);
+  --color-energy: var(--violet-purple);
+  --color-gold: var(--violet-purple);
+  --color-gold-muted: var(--muted);
+  --color-amber: var(--soft-coral);
+  --color-gold-subtle: rgba(139, 92, 246, 0.12);
   --color-border: var(--grid-grey);
-  --color-overlay: rgba(5, 5, 5, 0.92);
+  --color-overlay: rgba(7, 8, 18, 0.92);
   --color-light-section: var(--paper);
-  --color-light-text: var(--deep);
+  --color-light-text: #070812;
 
   --font-display: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
