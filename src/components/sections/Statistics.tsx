@@ -98,7 +98,7 @@ export function Statistics() {
     <section className="stats light-section" id="stats">
       <div className="container">
         <div className="stats__header">
-          <span className="section-eyebrow">ACT 03 — SYSTEM METRICS</span>
+          <span className="section-eyebrow">ACT 02 — SYSTEM METRICS</span>
         </div>
         <div className="stats__grid">
           {stats.map((stat, i) => (

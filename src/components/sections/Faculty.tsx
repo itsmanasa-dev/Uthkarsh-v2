@@ -67,7 +67,7 @@ export function Faculty() {
   return (
     <section className="faculty section-surface--charcoal" id="faculty">
       <div className="container">
-        <div className="section-eyebrow">ACT 08 — PERSONNEL DIRECTORY</div>
+        <div className="section-eyebrow">ACT 07 — PERSONNEL DIRECTORY</div>
         <h2 className="faculty__heading">People Behind the Protocol</h2>
 
         <div className="faculty__leadership">

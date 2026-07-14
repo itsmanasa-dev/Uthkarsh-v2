@@ -15,6 +15,7 @@ export function HiddenTwist() {
       id="twist"
     >
       <div className="twist__bg" />
+      <div className="section-eyebrow" style={{ position: 'absolute', top: 'var(--section-space-lg)', left: 'var(--space-5)', zIndex: 2 }}>ACT 04 — SYSTEM DISRUPTION</div>
       <div className="container">
         <div className="twist__layout">
           <motion.div

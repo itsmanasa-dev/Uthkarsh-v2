@@ -477,6 +477,29 @@ section[id] {
   100% { opacity: 0.3; }
 }
 
+.bg-system__layer--gradient-mesh {
+  background:
+    radial-gradient(ellipse 40% 30% at 15% 20%, rgba(77, 124, 254, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 40% at 85% 30%, rgba(139, 92, 246, 0.02) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 25% at 60% 75%, rgba(77, 124, 254, 0.015) 0%, transparent 60%),
+    radial-gradient(ellipse 25% 35% at 30% 80%, rgba(139, 92, 246, 0.015) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 30% at 75% 50%, rgba(77, 124, 254, 0.01) 0%, transparent 50%);
+  animation: gradientMesh 15s ease-in-out infinite alternate;
+  opacity: 0.6;
+}
+
+@keyframes gradientMesh {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  25% { transform: translate(1%, -0.5%) scale(1.01); opacity: 0.6; }
+  50% { transform: translate(-0.5%, 1%) scale(1.02); opacity: 0.5; }
+  75% { transform: translate(0.5%, 0.5%) scale(0.99); opacity: 0.6; }
+  100% { transform: translate(-0.5%, -0.5%) scale(1.01); opacity: 0.4; }
+}
+
+@keyframes gradientMeshReduce {
+  0%, 100% { opacity: 0.3; transform: none; }
+}
+
 .bg-system__layer--circuits {
   background-image:
     linear-gradient(90deg, transparent 49.9%, rgba(77, 124, 254, 0.015) 50%, transparent 50.1%),

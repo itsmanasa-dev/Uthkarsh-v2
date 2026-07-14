@@ -6,6 +6,7 @@ export function BackgroundSystem() {
       <div className="bg-system__layer bg-system__layer--glow" />
       <div className="bg-system__layer bg-system__layer--scanlines" />
       <div className="bg-system__layer bg-system__layer--dots" />
+      <div className="bg-system__layer bg-system__layer--gradient-mesh" />
       <div className="bg-system__layer bg-system__layer--circuits" />
       <div className="bg-system__layer bg-system__layer--noise" />
     </div>

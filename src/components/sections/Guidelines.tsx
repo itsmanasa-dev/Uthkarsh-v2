@@ -338,7 +338,7 @@ export function Guidelines() {
   return (
     <section className="event-brief section-surface--warm-black" id="guidelines">
       <div className="container">
-        <div className="section-eyebrow">ACT 09 — EVENT DATABASE</div>
+        <div className="section-eyebrow">ACT 08 — EVENT DATABASE</div>
         <h2 className="event-brief__title">Event Brief</h2>
 
         <div className="event-brief__sections">

@@ -1,0 +1,293 @@
+.campus-motion {
+  padding: var(--section-space-xl) 0;
+  position: relative;
+  background: var(--charcoal);
+  overflow: hidden;
+}
+
+/* Soft glow behind frames */
+.campus-motion::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, var(--glow-blue) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(100px);
+  opacity: 0.3;
+}
+
+.campus-motion::after {
+  content: '';
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  width: 30vw;
+  height: 30vw;
+  background: radial-gradient(circle, var(--glow-purple) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+  opacity: 0.2;
+}
+
+.campus-motion .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Layout */
+.campus-motion__layout {
+  display: grid;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .campus-motion__layout {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-14);
+  }
+}
+
+/* Left Editorial */
+.campus-motion__editorial {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.campus-motion__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 900;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  line-height: var(--leading-none);
+}
+
+.campus-motion__intro {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 36rem;
+}
+
+/* Featured activity text */
+.campus-motion__featured {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.campus-motion__counter {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--soft-coral);
+  letter-spacing: var(--tracking-mono);
+}
+
+.campus-motion__activity-title {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-lg);
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+}
+
+.campus-motion__activity-desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.campus-motion__activity-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--violet-purple);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* Navigation */
+.campus-motion__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.campus-motion__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-1) var(--space-2);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.campus-motion__nav-btn:hover {
+  color: var(--color-text);
+}
+
+.campus-motion__nav-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.campus-motion__dots {
+  display: flex;
+  gap: var(--space-1);
+  flex: 1;
+  justify-content: center;
+}
+
+.campus-motion__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-border);
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+.campus-motion__dot:hover {
+  background: var(--color-text-secondary);
+}
+
+.campus-motion__dot--active {
+  background: var(--color-accent);
+  transform: scale(1.3);
+}
+
+.campus-motion__dot:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   CASCADING FRAME LAYOUT — Desktop
+   ======================================== */
+.campus-motion__frames {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.campus-motion__frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--void);
+  border: 1px solid var(--color-border);
+}
+
+.campus-motion__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Frame A — large hero frame spanning full width */
+.campus-motion__frame--a {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
+
+/* Frame B — right-aligned accent (starts at column 2) */
+.campus-motion__frame--b {
+  grid-column: 2 / -1;
+  aspect-ratio: 16 / 10;
+}
+
+/* Frame C — left bottom */
+.campus-motion__frame--c {
+  grid-column: 1 / 2;
+  aspect-ratio: 1 / 1;
+}
+
+/* Frame D — right bottom */
+.campus-motion__frame--d {
+  grid-column: 2 / -1;
+  aspect-ratio: 16 / 10;
+}
+
+/* ============================================
+   MOBILE
+   ============================================ */
+@media (max-width: 991px) {
+  .campus-motion__frames {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  .campus-motion__frame--a {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  .campus-motion__frame--b {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  .campus-motion__frame--c {
+    grid-column: 1 / 2;
+    aspect-ratio: 1 / 1;
+  }
+
+  .campus-motion__frame--d {
+    grid-column: 2 / 3;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .campus-motion__layout {
+    gap: var(--space-6);
+  }
+
+  .campus-motion__frames {
+    gap: var(--space-1);
+  }
+
+  .campus-motion__frame--a {
+    aspect-ratio: 16 / 9;
+  }
+
+  .campus-motion__frame--b {
+    aspect-ratio: 16 / 9;
+  }
+
+  .campus-motion__frame--c,
+  .campus-motion__frame--d {
+    aspect-ratio: 1 / 1;
+  }
+
+  .campus-motion__nav {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .campus-motion__dots {
+    order: -1;
+    flex-basis: 100%;
+    justify-content: center;
+    margin-bottom: var(--space-1);
+  }
+}

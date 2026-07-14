@@ -51,7 +51,7 @@ export function About() {
       <div className="about__signal-line" />
 
       <div className="container">
-        <div className="section-eyebrow">ACT 02 // MISSION BRIEF</div>
+        <div className="section-eyebrow">ACT 01 — MISSION BRIEF</div>
         <div className="about__layout">
           <div className="about__statement">
             {lines.map((line) => (

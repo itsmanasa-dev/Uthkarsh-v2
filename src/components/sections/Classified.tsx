@@ -8,7 +8,7 @@ export function Classified() {
   return (
     <section className="classified section-surface--void" id="challenge">
       <div className="container">
-        <div className="section-eyebrow">ACT 04 — CLASSIFIED DATA</div>
+        <div className="section-eyebrow">ACT 03 — CLASSIFIED DATA</div>
         <div className="classified__layout">
           <motion.div
             className="classified__content"

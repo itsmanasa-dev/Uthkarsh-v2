@@ -11,7 +11,7 @@ export function Institution() {
   return (
     <section className="institution section-surface--gunmetal" id="institution">
       <div className="container">
-        <div className="section-eyebrow">ACT 07 — HOST LOCATION</div>
+        <div className="section-eyebrow">ACT 06 — HOST LOCATION</div>
         <div className="institution__layout">
           <motion.div
             className="institution__media"

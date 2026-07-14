@@ -5,6 +5,7 @@ import { Statistics } from '../components/sections/Statistics'
 import { Classified } from '../components/sections/Classified'
 import { HiddenTwist } from '../components/sections/HiddenTwist'
 import { Timeline } from '../components/sections/Timeline'
+import { CampusInMotion } from '../components/sections/CampusInMotion'
 import { Institution } from '../components/sections/Institution'
 import { Faculty } from '../components/sections/Faculty'
 import { Guidelines } from '../components/sections/Guidelines'
@@ -49,6 +50,7 @@ export function Home() {
       <Classified />
       <HiddenTwist />
       <Timeline />
+      <CampusInMotion />
       <Institution />
       <Faculty />
       <Guidelines />

@@ -135,7 +135,7 @@ export function IntroExperience({ onComplete }: IntroExperienceProps) {
                   </div>
                   <div className="intro__sys-row">
                     <span className="intro__sys-label">STATUS</span>
-                    <span className="intro__sys-value intro__sys-value--orange">INITIALIZING</span>
+                    <span className="intro__sys-value intro__sys-value--accent">INITIALIZING</span>
                   </div>
                 </div>
 

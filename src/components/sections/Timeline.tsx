@@ -71,7 +71,7 @@ export function Timeline() {
     <section className="mission-circuit" ref={sectionRef} id="timeline">
       <div className="container">
         <div className="mission-circuit__header">
-          <div className="section-eyebrow">ACT 02 — MISSION CIRCUIT</div>
+          <div className="section-eyebrow">ACT 05 — MISSION CIRCUIT</div>
           <h2 className="mission-circuit__title">THE SIX-HOUR CIRCUIT</h2>
           <span className="mission-circuit__microcopy">
             06 HOURS // MULTIPLE CHECKPOINTS // ONE UNKNOWN PROBLEM

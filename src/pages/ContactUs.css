@@ -322,8 +322,8 @@
 .contact-page__support {
   display: flex; flex-direction: column; gap: var(--space-4);
   padding: var(--space-5);
-  border: 1px solid rgba(255,77,0,0.15);
-  background: rgba(255,77,0,0.03);
+  border: 1px solid rgba(77,124,254,0.15);
+  background: rgba(77,124,254,0.03);
   max-width: 32rem;
 }
 

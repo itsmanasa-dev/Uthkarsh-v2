@@ -95,7 +95,7 @@ export function Hero() {
               } : undefined}
             >
               <span className="hero__title-event">UTKARSH</span>
-              {/* 750ms–1050ms: 26 enters with scale + orange flash */}
+              {/* 750ms–1050ms: 26 enters with scale + flash */}
               <motion.span
                 className="hero__title-num"
                 initial={reducedMotion ? { opacity: 1 } : { opacity: 0, scale: 0.92 }}
