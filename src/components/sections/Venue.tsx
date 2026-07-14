@@ -27,7 +27,7 @@ export function Venue() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="venue__title">PESIAMS</h2>
+            <h2 className="venue__title">{eventConfig.venue.hall}</h2>
             <p className="venue__name">{eventConfig.institutionFull}</p>
             <p className="venue__location">{eventConfig.location}</p>
             <div className="venue__details">

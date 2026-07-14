@@ -36,7 +36,7 @@ export function Classified() {
               </div>
               <div className="classified__status-row">
                 <span className="classified__status-label">REVEAL TIME</span>
-                <span className="classified__status-value">10:00</span>
+                <span className="classified__status-value">10:00 AM</span>
               </div>
               <div className="classified__status-row">
                 <span className="classified__status-label">STATUS</span>
@@ -73,7 +73,7 @@ export function Classified() {
               <p className="classified__terminal-line"><span className="classified__terminal-prompt">$</span> ACCESS_CHALLENGE</p>
               <p className="classified__terminal-line classified__terminal-line--blink">&gt; ACCESS DENIED. INSUFFICIENT CLEARANCE.</p>
               <p className="classified__terminal-line"><span className="classified__terminal-prompt">$</span> STATUS</p>
-              <p className="classified__terminal-line">&gt; SEALED. REVEAL AT 10:00.</p>
+              <p className="classified__terminal-line">&gt; SEALED. REVEAL AT 10:00 AM.</p>
             </div>
           </motion.div>
         </div>

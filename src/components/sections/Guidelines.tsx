@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+﻿import { useState, useEffect, useRef } from 'react'
 import { motion } from 'motion/react'
 import { Accordion } from '../ui/Accordion'
 import { rules as rulesData } from '../../data/rules'
@@ -6,6 +6,31 @@ import { faqItems } from '../../data/faq'
 import { eventConfig } from '../../data/eventConfig'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import './Guidelines.css'
+
+function AnimatedTotal({ inView, reduced }: { inView: boolean; reduced: boolean }) {
+  const [display, setDisplay] = useState(reduced ? '₹15,000+' : '₹0')
+
+  useEffect(() => {
+    if (!inView || reduced) {
+      setDisplay('₹15,000+')
+      return
+    }
+    const steps = ['₹0', '₹1,247', '₹3,892', '₹7,451', '₹11,203', '₹14,567', '₹15,000', '₹15,000+']
+    let i = 0
+    const interval = setInterval(() => {
+      i++
+      if (i >= steps.length) {
+        clearInterval(interval)
+        setDisplay('₹15,000+')
+        return
+      }
+      setDisplay(steps[i])
+    }, 110)
+    return () => clearInterval(interval)
+  }, [inView, reduced])
+
+  return <>{display}</>
+}
 
 export function Guidelines() {
   const reducedMotion = useReducedMotion()
@@ -28,6 +53,35 @@ export function Guidelines() {
     title: faq.question,
     content: faq.answer,
   }))
+
+  const prizesInViewRef = useRef<HTMLDivElement>(null)
+  const [prizesInView, setPrizesInView] = useState(false)
+
+  useEffect(() => {
+    const el = prizesInViewRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setPrizesInView(true); observer.disconnect() } },
+      { rootMargin: '-40px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  const cardTransition = (delay: number) => ({
+    duration: 0.6,
+    delay,
+    ease: [0.22, 1, 0.36, 1] as const,
+  })
+
+  const prizeCardAnimation = (delay: number, reduced: boolean) => {
+    if (reduced) return { initial: { opacity: 1 }, animate: { opacity: 1 } }
+    return {
+      initial: { opacity: 0, y: 24 },
+      animate: { opacity: 1, y: 0 },
+      transition: cardTransition(delay),
+    }
+  }
 
   const sections = [
     {
@@ -77,41 +131,106 @@ export function Guidelines() {
       id: 'prize',
       title: '02 // REWARDS // UNLOCKED',
       content: (
-        <div className="event-brief__prizes">
-          <div className="event-brief__prizes-total">
-            <span className="event-brief__prizes-amount">{eventConfig.prizes.totalFormatted}</span>
+        <div className="event-brief__prizes" ref={prizesInViewRef}>
+          <motion.div
+            className="event-brief__prizes-total"
+            initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
+            animate={prizesInView || reducedMotion ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="event-brief__prizes-amount">
+              <AnimatedTotal inView={prizesInView} reduced={reducedMotion} />
+            </span>
             <span className="event-brief__prizes-total-label">TOTAL CASH PRIZES</span>
-          </div>
+            <div className="event-brief__prizes-gold-line" />
+          </motion.div>
+
           <div className="event-brief__prizes-grid">
-            <div className="event-brief__prize-card event-brief__prize-card--first">
+            <motion.div
+              className="event-brief__prize-card event-brief__prize-card--first"
+              {...prizeCardAnimation(0.3, reducedMotion)}
+            >
+              <div className="event-brief__prize-card-scan" />
               <div className="event-brief__prize-card-header">
                 <span className="event-brief__prize-card-num">01</span>
                 <span className="event-brief__prize-card-status">CHAMPION</span>
               </div>
               <span className="event-brief__prize-card-amount">{eventConfig.prizes.first.formatted}</span>
               <span className="event-brief__prize-card-label">{eventConfig.prizes.first.label}</span>
-            </div>
-            <div className="event-brief__prize-card event-brief__prize-card--second">
+            </motion.div>
+
+            <motion.div
+              className="event-brief__prize-card event-brief__prize-card--second"
+              {...prizeCardAnimation(0.45, reducedMotion)}
+            >
               <div className="event-brief__prize-card-header">
                 <span className="event-brief__prize-card-num">02</span>
                 <span className="event-brief__prize-card-status">RUNNER-UP</span>
               </div>
               <span className="event-brief__prize-card-amount">{eventConfig.prizes.second.formatted}</span>
               <span className="event-brief__prize-card-label">{eventConfig.prizes.second.label}</span>
-            </div>
-            <div className="event-brief__prize-card event-brief__prize-card--goodies">
+            </motion.div>
+
+            <motion.div
+              className="event-brief__prize-card event-brief__prize-card--bonus"
+              {...prizeCardAnimation(0.6, reducedMotion)}
+            >
               <div className="event-brief__prize-card-header">
                 <span className="event-brief__prize-card-num">03</span>
                 <span className="event-brief__prize-card-status">BONUS</span>
               </div>
-              <div className="event-brief__prize-card-items">
-                {eventConfig.prizes.items.map((item, i) => (
-                  <span key={i} className="event-brief__prize-card-item">{item}</span>
-                ))}
+              <div className="event-brief__prize-card-bonus-grid">
+                <motion.span
+                  className="event-brief__prize-card-bonus-highlight"
+                  initial={reducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
+                  animate={prizesInView || reducedMotion ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.75, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  EXCLUSIVE GOODIES
+                </motion.span>
+                <motion.div
+                  className="event-brief__prize-card-bonus-row"
+                  initial={reducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
+                  animate={prizesInView || reducedMotion ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <span className="event-brief__prize-card-bonus-line" />
+                  <div className="event-brief__prize-card-bonus-content">
+                    <span className="event-brief__prize-card-bonus-sub">WINNERS</span>
+                    <span className="event-brief__prize-card-bonus-text">{eventConfig.prizes.certificates.winners}</span>
+                  </div>
+                </motion.div>
+                <motion.div
+                  className="event-brief__prize-card-bonus-row"
+                  initial={reducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
+                  animate={prizesInView || reducedMotion ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.95, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <span className="event-brief__prize-card-bonus-line" />
+                  <div className="event-brief__prize-card-bonus-content">
+                    <span className="event-brief__prize-card-bonus-sub">ALL PARTICIPANTS</span>
+                    <span className="event-brief__prize-card-bonus-text">{eventConfig.prizes.certificates.participation}</span>
+                  </div>
+                </motion.div>
               </div>
-              <span className="event-brief__prize-card-label">PERKS</span>
-            </div>
+              <span className="event-brief__prize-card-label event-brief__prize-card-label--bonus">PERKS // UNLOCKED</span>
+            </motion.div>
           </div>
+
+          <motion.div
+            className="event-brief__prizes-status"
+            initial={reducedMotion ? { opacity: 1 } : { opacity: 0 }}
+            animate={prizesInView || reducedMotion ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="event-brief__prizes-status-dot" />
+            <span className="event-brief__prizes-status-text">REWARDS CONFIRMED</span>
+            <span className="event-brief__prizes-status-sep" />
+            <span className="event-brief__prizes-status-highlight">{eventConfig.prizes.totalFormatted} CASH POOL</span>
+            <span className="event-brief__prizes-status-sep" />
+            <span className="event-brief__prizes-status-dot" />
+            <span className="event-brief__prizes-status-text">CERTIFICATES CONFIRMED</span>
+          </motion.div>
         </div>
       ),
     },

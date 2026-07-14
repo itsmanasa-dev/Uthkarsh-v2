@@ -31,7 +31,7 @@ export function ContactUs() {
             </h1>
 
             <p className="contact-page__desc">
-              Questions about registration, payment, team requirements or the event?
+              Questions about registration, payment, team requirements, or the event?
               Connect directly with the UTKARSH 26 organising team.
             </p>
 

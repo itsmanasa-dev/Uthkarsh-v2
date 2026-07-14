@@ -6,9 +6,9 @@ import { useReducedMotion } from '../../hooks/useReducedMotion'
 import './Timeline.css'
 
 const keyEvents = [
-  { time: '10:00', label: 'Challenge\nReveal', type: 'start' as const },
-  { time: '14:30', label: 'Hidden\nTwist', type: 'twist' as const },
-  { time: '16:00', label: 'Hard\nDeadline', type: 'deadline' as const },
+  { time: '10:00 AM', label: 'Challenge\nReveal', type: 'start' as const },
+  { time: '2:30 PM', label: 'Hidden\nTwist', type: 'twist' as const },
+  { time: '4:00 PM', label: 'Hard\nDeadline', type: 'deadline' as const },
 ]
 
 export function Timeline() {
@@ -67,7 +67,7 @@ export function Timeline() {
                 <span className="status-dot status-dot--active" />
               </div>
               <div className="timeline__monitor-main">
-                <div className="timeline__monitor-time">10:00</div>
+                <div className="timeline__monitor-time">10:00 AM</div>
                 <div className="timeline__monitor-event">CHALLENGE REVEAL</div>
                 <div className="timeline__monitor-bar">
                   {!reducedMotion && (

@@ -24,7 +24,7 @@ export function HiddenTwist() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="twist__time-num">14:30</span>
+            <span className="twist__time-num">2:30 PM</span>
             <span className="twist__time-label">SYSTEM DISRUPTION</span>
           </motion.div>
 

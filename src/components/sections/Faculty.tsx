@@ -13,8 +13,8 @@ const facultyConfig: Record<string, { objectPosition: string; role: string }> = 
 function FacultyCard({ member, index }: { member: typeof facultyMembers[number]; index: number }) {
   const config = facultyConfig[member.id] || { objectPosition: 'center 30%', role: '' }
   const isLeader = member.id === 'principal' || member.id === 'hod'
-  const displayName = member.name || (isLeader ? config.role : null)
-  const displayRole = member.designation || (!isLeader ? config.role : null)
+  const displayName = member.name || config.role
+  const isPlaceholder = !member.name && !isLeader
 
   return (
     <motion.div
@@ -31,7 +31,7 @@ function FacultyCard({ member, index }: { member: typeof facultyMembers[number];
       <div className="faculty__image-wrap">
         <img
           src={member.image}
-          alt={displayName || `${config.role || 'Faculty'} - Pending`}
+          alt={displayName || `${config.role || 'Faculty'}`}
           className="faculty__image"
           style={{ objectPosition: config.objectPosition }}
           onError={(e) => {
@@ -51,14 +51,10 @@ function FacultyCard({ member, index }: { member: typeof facultyMembers[number];
       </div>
       <div className="faculty__info">
         <div className="faculty__status-line" />
-        {displayName ? (
-          <h3 className="faculty__name">{displayName}</h3>
-        ) : (
-          <h3 className="faculty__name faculty__name--pending">Pending Confirmation</h3>
-        )}
-        {displayRole && (
-          <p className="faculty__role">{displayRole}</p>
-        )}
+        <h3 className="faculty__name">{displayName}</h3>
+        {isPlaceholder ? (
+          <p className="faculty__role faculty__role--pending">Details to be announced</p>
+        ) : null}
       </div>
     </motion.div>
   )

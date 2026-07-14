@@ -86,9 +86,9 @@ export function ContactSection() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="contact__intro-text">
-            Questions about registration, payment, team requirements or the event?
+            Questions about registration, payment, team requirements, or the event?
             <br />
-            Reach the UTKARSH 26 organising team directly.
+            Contact the UTKARSH 26 organising team directly.
           </p>
         </motion.div>
 

@@ -154,7 +154,7 @@ export function Hero() {
               </div>
               <div className="hero__data-divider" />
               <div className="hero__data-item">
-                <span className="hero__data-num">200</span>
+                <span className="hero__data-num">{eventConfig.maxParticipants}</span>
                 <span className="hero__data-label">MINDS</span>
               </div>
               <div className="hero__data-divider" />
@@ -164,7 +164,7 @@ export function Hero() {
               </div>
               <div className="hero__data-divider" />
               <div className="hero__data-item">
-                <span className="hero__data-num">02–04</span>
+                <span className="hero__data-num">{eventConfig.minTeamSize}–{eventConfig.maxTeamSize}</span>
                 <span className="hero__data-label">TEAM SIZE</span>
               </div>
             </motion.div>
@@ -206,7 +206,7 @@ export function Hero() {
                 </motion.span>
               </div>
               <div className="hero__time-range">
-                <span>09:00</span>
+                <span>{eventConfig.overallStart}</span>
                 <span className="hero__time-bar">
                   <motion.span
                     className="hero__time-fill"
@@ -215,7 +215,7 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
                   />
                 </span>
-                <span>17:00</span>
+                <span>{eventConfig.overallEnd}</span>
               </div>
               <div className="hero__time-caption">THE CLOCK IS ALREADY TICKING.</div>
             </motion.div>
@@ -227,7 +227,7 @@ export function Hero() {
           <span className="hero__bottom-divider" />
           <span className="hero__bottom-text">PESIAMS // SHIVAMOGGA</span>
           <span className="hero__bottom-divider" />
-          <span className="hero__bottom-text">09:00 — 17:00</span>
+          <span className="hero__bottom-text">{eventConfig.overallStart} \u2013 {eventConfig.overallEnd}</span>
         </div>
       </div>
     </section>

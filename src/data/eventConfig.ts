@@ -36,10 +36,15 @@ export const eventConfig = {
 
   prizes: {
     totalFormatted: '₹15,000+',
-    first: { formatted: '₹10,000', label: 'FIRST PRIZE' },
-    second: { formatted: '₹5,000', label: 'SECOND PRIZE' },
+    totalNumeric: 15000,
+    first: { formatted: '₹10,000', label: 'FIRST PRIZE', numeric: 10000 },
+    second: { formatted: '₹5,000', label: 'SECOND PRIZE', numeric: 5000 },
     items: ['Exclusive Goodies', 'Winner & Runner-Up Certificates'] as const,
     goodiesLabel: 'Exclusive Goodies',
+    certificates: {
+      participation: 'PARTICIPATION CERTIFICATES FOR ALL PARTICIPANTS',
+      winners: 'Winner & Runner-Up Certificates',
+    },
   },
 
   media: {
@@ -55,7 +60,9 @@ export const eventConfig = {
   },
 
   venue: {
+    hall: 'PCH Hall',
     address: 'PES Institute of Advanced Management Studies, Shivamogga, Karnataka',
+    full: 'PCH Hall, PES Institute of Advanced Management Studies, Shivamogga, Karnataka',
     mapsQuery: 'PES+Institute+of+Advanced+Management+Studies+Shivamogga',
   },
 } as const
