@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { motion, useScroll, useTransform } from 'motion/react'
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'motion/react'
 import { timelineEvents } from '../../data/timeline'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import './Timeline.css'
@@ -16,28 +16,31 @@ const descriptions = [
   'System deactivation. Exit clearance and concluding team photo session.'
 ]
 
+// 11 total points: Point 0 (Start), Points 1-9 (Checkpoints), Point 10 (Finish)
 const POINTS = [
-  { x: 450, y: 60 },   // CP 0
-  { x: 200, y: 180 },  // CP 1
-  { x: 700, y: 300 },  // CP 2
-  { x: 200, y: 420 },  // CP 3
-  { x: 700, y: 540 },  // CP 4
-  { x: 200, y: 660 },  // CP 5
-  { x: 700, y: 780 },  // CP 6
-  { x: 450, y: 900 },  // CP 7
-  { x: 450, y: 1020 }, // CP 8
+  { x: 450, y: 15 },    // Start Node (SYSTEM ENTRY)
+  { x: 450, y: 95 },    // CP 0
+  { x: 200, y: 205 },   // CP 1
+  { x: 700, y: 315 },   // CP 2
+  { x: 200, y: 425 },   // CP 3
+  { x: 700, y: 535 },   // CP 4
+  { x: 200, y: 645 },   // CP 5
+  { x: 700, y: 755 },   // CP 6
+  { x: 450, y: 875 },   // CP 7
+  { x: 450, y: 985 },   // CP 8
+  { x: 450, y: 1065 },  // Finish Node (MISSION COMPLETE)
 ]
 
 const CARD_POSITIONS = [
-  { left: '55%', top: '3.5%', width: '35%', align: 'left' as const },
-  { left: '28%', top: '14.5%', width: '48%', align: 'left' as const },
-  { left: '22%', top: '25.5%', width: '48%', align: 'right' as const },
+  { left: '55%', top: '6.5%', width: '35%', align: 'left' as const },
+  { left: '28%', top: '16.5%', width: '48%', align: 'left' as const },
+  { left: '22%', top: '26.5%', width: '48%', align: 'right' as const },
   { left: '28%', top: '36.5%', width: '48%', align: 'left' as const },
   { left: '22%', top: '47.5%', width: '48%', align: 'right' as const },
   { left: '28%', top: '58.5%', width: '48%', align: 'left' as const },
   { left: '22%', top: '69.5%', width: '48%', align: 'right' as const },
-  { left: '55%', top: '80.5%', width: '35%', align: 'left' as const },
-  { left: '10%', top: '91.5%', width: '35%', align: 'right' as const },
+  { left: '55%', top: '77.5%', width: '35%', align: 'left' as const },
+  { left: '10%', top: '87.5%', width: '35%', align: 'right' as const },
 ]
 
 export function Timeline() {
@@ -52,6 +55,13 @@ export function Timeline() {
   // Travel progress for the energy pulse
   const pulseOffset = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
 
+  // Monitor the scroll progress to toggle Finish Node status
+  const [finishStatus, setFinishStatus] = useState<'incoming' | 'active'>('incoming')
+  
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setFinishStatus(latest > 0.96 ? 'active' : 'incoming')
+  })
+
   // Path SVG rendering
   const pathD = POINTS.reduce((acc, p, i) => {
     return i === 0 ? `M ${p.x} ${p.y}` : `${acc} L ${p.x} ${p.y}`
@@ -61,7 +71,8 @@ export function Timeline() {
     <section className="mission-circuit" ref={sectionRef} id="timeline">
       <div className="container">
         <div className="mission-circuit__header">
-          <div className="section-eyebrow">ACT 06 — MISSION CIRCUIT</div>
+          <div className="section-eyebrow">ACT 02 — MISSION CIRCUIT</div>
+          <h2 className="mission-circuit__title">THE SIX-HOUR CIRCUIT</h2>
           <span className="mission-circuit__microcopy">
             06 HOURS // MULTIPLE CHECKPOINTS // ONE UNKNOWN PROBLEM
           </span>
@@ -106,17 +117,32 @@ export function Timeline() {
             />
           )}
 
-          {/* Render desktop circuit elements */}
+          {/* Start Node */}
+          <div className="circuit-node circuit-node--start circuit-node--completed" style={{ left: '50%', top: '1.36%' }}>
+            <div className="circuit-node__ring" />
+            <div className="circuit-node__core" />
+            <div className="circuit-node__label circuit-node__label--left">START // SYSTEM ENTRY</div>
+          </div>
+
+          {/* Render desktop circuit checkpoints */}
           {timelineEvents.map((event, i) => (
             <CircuitDesktopStep
               key={`${event.time}-${i}`}
               event={event}
               index={i}
               description={descriptions[i]}
-              point={POINTS[i]}
+              point={POINTS[i + 1]}
               cardPos={CARD_POSITIONS[i]}
             />
           ))}
+
+          {/* Finish Node */}
+          <div className={`circuit-node circuit-node--finish circuit-node--${finishStatus}`} style={{ left: '50%', top: '96.81%' }}>
+            <div className="circuit-node__ring" />
+            <div className="circuit-node__core" />
+            <div className="circuit-node__glow" />
+            <div className="circuit-node__label circuit-node__label--right">FINISH // BUILD SUBMITTED</div>
+          </div>
         </div>
 
         {/* Mobile Circuit (width < 992px) */}
@@ -143,6 +169,19 @@ export function Timeline() {
           </div>
 
           <div className="circuit-mobile__steps">
+            {/* Mobile Start Node */}
+            <div className="circuit-mobile-step circuit-mobile-step--start circuit-mobile-step--completed">
+              <div className="circuit-mobile-step__node">
+                <div className="circuit-mobile-step__ring" />
+                <div className="circuit-mobile-step__core" />
+              </div>
+              <div className="circuit-mobile-step__card circuit-mobile-step__card--start">
+                <span className="circuit-mobile-step__id">START // 00</span>
+                <h4 className="circuit-mobile-step__title">SYSTEM ENTRY</h4>
+              </div>
+            </div>
+
+            {/* Mobile Checkpoints */}
             {timelineEvents.map((event, i) => (
               <CircuitMobileStep
                 key={`${event.time}-m-${i}`}
@@ -151,6 +190,18 @@ export function Timeline() {
                 description={descriptions[i]}
               />
             ))}
+
+            {/* Mobile Finish Node */}
+            <div className={`circuit-mobile-step circuit-mobile-step--finish circuit-mobile-step--${finishStatus}`}>
+              <div className="circuit-mobile-step__node">
+                <div className="circuit-mobile-step__ring" />
+                <div className="circuit-mobile-step__core" />
+              </div>
+              <div className="circuit-mobile-step__card circuit-mobile-step__card--finish">
+                <span className="circuit-mobile-step__id">FINISH // 10</span>
+                <h4 className="circuit-mobile-step__title">BUILD SUBMITTED // MISSION COMPLETE</h4>
+              </div>
+            </div>
           </div>
         </div>
       </div>
