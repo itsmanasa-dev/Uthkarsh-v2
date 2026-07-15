@@ -31,8 +31,35 @@ function clipReveal(delay: number, reduced: boolean, dir: 'bottom' | 'left' = 'b
   }
 }
 
+const COUNTDOWN_TARGET = new Date('2026-09-01T09:00:00+05:30')
+const COUNTDOWN_DATE = '01 SEPTEMBER 2026'
+const COUNTDOWN_TIME = '09:00 AM IST'
+
+function useCountdown() {
+  const calc = useCallback(() => {
+    const diff = COUNTDOWN_TARGET.getTime() - Date.now()
+    if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0, over: true }
+    return {
+      d: Math.floor(diff / 86400000),
+      h: Math.floor((diff % 86400000) / 3600000),
+      m: Math.floor((diff % 3600000) / 60000),
+      s: Math.floor((diff % 60000) / 1000),
+      over: false,
+    }
+  }, [])
+  const [r, setR] = useState(calc)
+  useEffect(() => {
+    const id = setInterval(() => setR(calc()), 1000)
+    return () => clearInterval(id)
+  }, [calc])
+  return r
+}
+
+const pad = (n: number) => String(n).padStart(2, '0')
+
 export function Hero() {
   const reducedMotion = useReducedMotion()
+  const cd = useCountdown()
   const [glitchActive, setGlitchActive] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
   const [mouseX, setMouseX] = useState(0)
@@ -169,55 +196,55 @@ export function Hero() {
               </div>
             </motion.div>
 
-            {/* EVENT WINDOW — colon pulse, sequential digit reveal */}
+            {/* COUNTDOWN TIMER */}
             <motion.div
-              className="hero__time-display"
+              className="hero__countdown"
+              role="timer"
+              aria-label="Countdown to UTKARSH 26"
               initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="hero__time-header">
-                <span className="hero__time-tag">EVENT WINDOW</span>
-                <span className="status-dot status-dot--active" />
+              <div className="hero__countdown-header">
+                <span className="hero__countdown-tag">COUNTDOWN TO UTKARSH 26</span>
               </div>
-              <div className="hero__time-digits">
-                <motion.span
-                  initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  06
-                </motion.span>
-                <span className="hero__time-sep">:</span>
-                <motion.span
-                  initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.75, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  00
-                </motion.span>
-                <span className="hero__time-sep">:</span>
-                <motion.span
-                  initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  00
-                </motion.span>
-              </div>
-              <div className="hero__time-range">
-                <span>{eventConfig.overallStart}</span>
-                <span className="hero__time-bar">
-                  <motion.span
-                    className="hero__time-fill"
-                    initial={reducedMotion ? { width: '30%' } : { width: '0%' }}
-                    animate={{ width: '30%' }}
-                    transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                  />
-                </span>
-                <span>{eventConfig.overallEnd}</span>
-              </div>
-              <div className="hero__time-caption">THE CLOCK IS ALREADY TICKING.</div>
+              {cd.over ? (
+                <div className="hero__countdown-live">
+                  <span className="hero__countdown-live-tag">EVENT HAS STARTED</span>
+                  <span className="hero__countdown-live-title">Welcome to UTKARSH 26</span>
+                </div>
+              ) : (
+                <>
+                  <div className="hero__countdown-days">
+                    <span className="hero__countdown-days-num">{pad(cd.d)}</span>
+                    <span className="hero__countdown-days-label">DAYS</span>
+                  </div>
+                  <div className="hero__countdown-clock">
+                    <div className="hero__countdown-clock-row">
+                      <div className="hero__countdown-clock-unit">
+                        <span className="hero__countdown-digit">{pad(cd.h)}</span>
+                        <span className="hero__countdown-clock-label">HRS</span>
+                      </div>
+                      <span className="hero__countdown-sep" aria-hidden="true">:</span>
+                      <div className="hero__countdown-clock-unit">
+                        <span className="hero__countdown-digit">{pad(cd.m)}</span>
+                        <span className="hero__countdown-clock-label">MIN</span>
+                      </div>
+                      <span className="hero__countdown-sep" aria-hidden="true">:</span>
+                      <div className="hero__countdown-clock-unit">
+                        <span className="hero__countdown-digit">{pad(cd.s)}</span>
+                        <span className="hero__countdown-clock-label">SEC</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="hero__countdown-divider" role="separator" />
+                  <div className="hero__countdown-footer">
+                    <span className="hero__countdown-date">{COUNTDOWN_DATE}</span>
+                    <span className="hero__countdown-time">{COUNTDOWN_TIME}</span>
+                    <span className="hero__countdown-tagline">Every Second Counts.</span>
+                  </div>
+                </>
+              )}
             </motion.div>
           </div>
         </div>
